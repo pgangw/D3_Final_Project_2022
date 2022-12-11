@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The cost of fashion</title>
+        <script src= "https://d3js.org/d3.v7.min.js"></script>
+        <style type="text/css">
+
+            
+      * {
+          margin: 0;
+          padding: 0;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            font-family: sans-serif;
+            max-width: 100%;
+            max-height: 100%;
+          }
+
+
+        .description {
+            font-size: 13px;
+            font-weight: normal;
+            font-family: sans-serif;
+        }
+
+        .button_back {
+            background-color: #A0A0A0; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            position: absolute;
+            border-radius: 40px;
+            height: 3vh;
+            width: 3vw;
+            left: 30vw;
+            top: 60vh; 
+            border: none;
+          }
+
+          .button_back:hover {
+          background-color: #000;
+          color: white;
+          }
+          .button_next {
+            background-color: #000; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            position: absolute;
+            border-radius: 40px;
+            height: 3vh;
+            width: 3vw;
+            left: 67vw;
+            top: 60vh; 
+            border: none;
+          }
+
+          .button_next:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+
+        </style>
+    </head>
+    <body>
+      <svg width="100vw" height="100vh"></svg>  
+      <button class="button_back" id="back" style="color: #FFFBF7" onclick="window.location.replace('02Flow.html');">Back</button>
+      <button class="button_next" id="back" style="color: #FFFBF7" onclick="window.location.replace('04Flow.html');">Next</button>
+    <script type="text/javascript">  
+
+    const svg = d3.select("svg")
+                   .style('background-color', '#FFFBF7');
+            
+            const w = parseInt(d3.select("svg").style("width"));
+            const h = parseInt(d3.select("svg").style("height"));
+      
+
+            svg.append("text")
+                   .attr("x", w/2) 
+                   .attr("y", h/5) 
+                   .attr("text-anchor", "middle") 
+                   .attr("fill", "#A75E23")
+                   .attr("class", "title")
+                   .text("The Fashion Transparency Index"); 
+
+            //Para1
+                   
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("text-anchor", "middle") 
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("The “fashion transparency index” is a tool designed by The Fashion"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "1.5em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("Revolution (https://www.fashionrevolution.org) to rank the world’s largest"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "3em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("fashion brands and retailers based on what information they disclose about"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "4.5em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("their social and environmental policies, practices and impacts, in their "); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "6em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("operations and supply chain."); 
+
+            //Para2
+                   
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "9em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("It is a tool to push and incentivize fashion brands to be more transparent"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "10.5em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("about their social and environmental efforts as it is foundational to"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "12em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("achieving systemic change in the global fashion industry."); 
+
+
+            //Para3
+                   
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "15em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("This interaction visualization project will focus on the environmental impact"); 
+
+            svg.append("text")
+                  .attr("x", w/2) 
+                  .attr("y", h*0.25) 
+                  .attr("dy", "16.5em")
+                  .attr("text-anchor", "middle") 
+                  .attr("fill", "black")
+                  .attr("class", "description")
+                  .text("metrics captured in their study."); 
+
+
+
+    </script>
+  </body>
+</html>

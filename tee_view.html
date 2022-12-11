@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>fashion scores</title>
+        <script src= "https://d3js.org/d3.v7.min.js"></script>
+        <style type="text/css"> 
+
+        	svg{
+            width:1840px;
+            height:3100px;
+          }
+
+          .title {
+            font-size: 22px;
+            font-weight: bold;
+            font-family: sans-serif;
+          }
+
+          .para {
+            font-size: 13px;
+            font-weight: normal;
+            font-family: sans-serif;
+          }
+
+          .score{
+            font-size: 13px;
+            font-weight: bold;
+            font-family: sans-serif;
+          }
+
+          .button_back {
+            background-color: #A0A0A0; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            border-radius: 40px;
+            height: 30px;
+            width: 50;
+            left: 50px;
+            top: 3070px; 
+            border: none;
+          }
+
+          .button_back:hover {
+          background-color: #000;
+          color: white;
+          }
+
+          .button_next {
+            background-color: #000; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            border-radius: 40px;
+            height: 30px;
+            width: 50;
+            left: 1765px;
+            top: 3070px; 
+            border: none;
+          }
+
+          .button_next:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+ 
+        /*styling the tooltip*/
+           #tooltip{
+            position: absolute;
+            width: auto;
+            height: auto;
+            padding: 2px;    
+            text-align: center; 
+            font-family:sans-serif;
+            font-size: 12px;
+            font-weight: 550;
+            background: #E6A654;
+            -webkit-text-fill-color: #FFFBF7; 
+            border-radius: 8px;
+          }
+
+          .button_asc {
+            background-color: #848294; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 20px;
+            width: 100px;
+            left: 80px;
+            top: 140px; 
+            border: none;
+            border-radius: 20px;
+          }
+
+          .button_asc:hover {
+          background-color: #E6A654;
+          color: white;
+          
+          }
+
+          .button_des {
+            background-color: #848294; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 20px;
+            width: 95px;
+            left: 220px;
+            top: 140px; 
+            border: none;
+            border-radius: 20px;
+          }
+
+          .button_des:hover {
+          background-color: #E6A654;
+          color: white;
+          
+          }
+
+
+        </style>
+    </head>
+    <body>
+
+         <svg></svg>
+         <button class="button_asc" id="asc" style="color:#FFFBF7">Ascending</button>
+         <button class="button_des" id="des" style="color:#FFFBF7">Descending</button>
+         <button class="button_back" id="back" style="color: #FFFBF7" onclick="window.location.replace('05Flow.html');">Back</button>
+        <button class="button_next" id="back" style="color: #FFFBF7" onclick="window.location.replace('fashion_force_collide.html');">Next</button>
+        <script type="text/javascript">
+       
+
+      d3.csv("fashion.csv").then(dataset => {  
+
+        //Formatting the data 
+        dataset.forEach(d => {
+            d.Brand = d.Brand;
+            d.Total = +d.Total.replace(",", "");
+        });
+
+        //Color using min and max 
+        const maxData = d3.max(dataset, d=>d.Total);
+        const minData = d3.min(dataset, d=>d.Total);
+        const myColor = d3.scaleLinear()
+                          .domain([minData, maxData])
+                          .range(["#958EBF", "#4E2983"]);
+
+        
+        //Drawn with d3.line()                 
+        const teeGenerator = d3.line();
+        
+
+        //Drawing the tee shirts
+        const tee_points = [ "M100,50 L75,25 25,50 37.5,75 62.5,62.5 62.5,137.5 137.5,137.5 137.5,62.5 162.5,75 175,50 125,25 100,50" 
+
+        ];
+
+
+        const pathString = teeGenerator(tee_points);
+        const perRow = 9;
+        const size = 200;
+        const sizeY = 180;
+
+        const svg = d3.select("svg")
+                   .style('background-color', '#FFFBF7');;
+
+        //Making groups
+        const g = svg.selectAll("g")
+                      .data(dataset.sort((a,b)=>d3.ascending(a.Total, b.Total)))
+                      .enter()
+                      .append("g")
+                      .attr("transform", (d,i)=>{
+                        const x = (i % perRow + 0.1) * size;
+                        const y = (Math.floor(i/perRow)+1) * sizeY;
+                        return "translate(" + [x,y] + ")";})
+
+        //tooltip (positioned outside of SVG)
+        const tooltip =d3.select("body")
+                         .append("div")
+                         .attr("id", "tooltip")
+                         .style("opacity", 1);
+
+        g.append("path")
+         .attr("d", tee_points)
+         .attr("fill", d=> myColor(d.Total))
+         .attr("stroke-width", "1px")
+         .on("mouseover", (event, d)=> {
+             d3.select("#tooltip")
+               .transition()
+               .duration(600)
+               .style("opacity", 1)
+               .style("left", (event.pageX + 2) + "px")
+               .style("top", (event.pageY + 2) + "px")
+        tooltip.html("Total score: " + "<br>" + d.Total + "/" + "32" + "<br>" + "<br>" + "Brand: " + "<br>" + d.Brand + "<br>" + "<br>" + "Country: " + "<br>" + d.Country);//setting the html here for the <br>
+            })     
+          .on("mouseout", (event, d)=>{
+            d3.select("#tooltip")
+              .transition()
+              .style("opacity", 0);
+            })
+          .on("mousemove", (event, d) =>{
+            d3.select("#tooltip")
+              .style("left", (event.pageX + 2) + "px")
+              .style("top", (event.pageY + 2) + "px")
+
+          });
+ 
+          //Button feature
+            d3.select(".button_des")
+            .on("click", (event,d)=> {
+            svg.selectAll("path")
+               .data(dataset.sort((a,b)=>d3.descending(a.Total, b.Total)))
+               .transition()
+               .duration(2000)
+               .attr("fill", d=> myColor(d.Total));
+              console.log(dataset);
+
+          });
+          d3.select(".button_asc")
+            .on("click", (event,d)=> {
+            svg.selectAll("path")
+               .data(dataset.sort((a,b)=>d3.ascending(a.Total, b.Total)))
+               .transition()
+               .duration(2000)
+               .attr("fill", d=> myColor(d.Total));
+              console.log(dataset);
+
+          });
+        
+        //Making the Title 
+        svg.append("text")
+           .attr("x", 70) 
+           .attr("y", 50) 
+           .attr("text-anchor", "left") 
+           .attr("fill", "#A75E23")
+           .attr("class", "title")
+           .text("The topmost and the least sustainable brands");  
+
+        //Making the short descriptions 
+        svg.append("text")  
+           .attr("x", 70) 
+           .attr("y", 80)  
+           .attr("text-anchor", "left") 
+           .attr("fill", "#000")
+           .attr("class", "para")
+           .text("Hover over the tshirts to find the most and the least environmentally sustainable brands. The sub-category scores have been summed together to calculate every brand's totals.");
+
+        svg.append("text")  
+           .attr("x", 70) 
+           .attr("y", 100)  
+           .attr("text-anchor", "left") 
+           .attr("fill", "#000")
+           .attr("class", "score")
+           .text("The best possible score of 32 indicates high transparency, while 0 reflects no transparency. Alternatively, darker shade of purple reflects high transparency.");
+
+
+        });
+        
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The cost of fashion</title>
+        <script src= "https://d3js.org/d3.v7.min.js"></script>
+        <style type="text/css">
+
+        * {
+          margin: 0;
+          padding: 0;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            font-family: sans-serif;
+          }
+
+        .subtitle {
+            font-size: 18px;
+            font-weight: bold;
+            font-family: sans-serif;
+          }
+
+        .description {
+            font-size: 13px;
+            font-weight: normal;
+            font-family: sans-serif;
+        }
+
+        .score {
+            font-size: 13px;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+
+        /*styling the button*/
+        .button_one {
+            background-color: #4E2983; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            position: absolute;
+            height: 7vh;
+            width: 5vw;
+            left: 33.5vw;
+            top: 14vh; 
+            border: none;
+          }
+
+          .button_two {
+            background-color: #A75E23; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 7vh;
+            width: 5vw;
+            left: 40.5vw;
+            top: 14vh;  
+            border: none;
+          }
+
+          .button_three {
+            background-color: #958EBF; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 7vh;
+            width: 5vw;
+            left: 47.5vw;
+            top: 14vh;  
+            border: none;
+            text-decoration: underline;
+          }
+
+          .button_four {
+            background-color: #E6A654; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 7vh;
+            width: 5vw;
+            left: 54.5vw;
+            top: 14vh;  
+            border: none;
+          }
+
+          .button_five {
+            background-color: #848294; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            /* border-color: #583101; */
+            box-shadow: none;
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            height: 7vh;
+            width: 5vw;
+            left: 61.5vw;
+            top: 14vh;  
+            border: none;
+          }
+
+          .button_one:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+          .button_two:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+          .button_three:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+          .button_four:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+          .button_five:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+          .button_back {
+            background-color: #A0A0A0; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            position: absolute;
+            border-radius: 40px;
+            height: 3vh;
+            width: 3vw;
+            left: 2vw;
+            top: 293vh;  
+            border: none;
+          }
+
+          .button_back:hover {
+          background-color: #000;
+          color: white;
+          }
+
+          .button_next {
+            background-color: #000; 
+            font-family: sans-serif;
+            font-size: 0.75em;
+            position: absolute;
+            border-radius: 40px;
+            height: 3vh;
+            width: 3vw;
+            left: 95vw;
+            top: 293vh; 
+            border: none;
+          }
+
+          .button_next:hover {
+          background-color: #A0A0A0;
+          color: white;
+          }
+
+        </style>
+    </head>
+    <body>
+        <svg width="100vw" height="300vh"></svg>  
+        <button class="button_one" id="one" style="color:#FFFBF7" onclick="window.location.replace('chart_one.html');">Sustainable sourcing & materials</button>
+        <button class="button_two" id="two" style="color:#FFFBF7" Onclick="window.location.replace('chart_two.html');">Waste, circularity & overconsumption</button>
+        <button class="button_three" id="three" style="color:#FFFBF7" onclick="window.location.replace('chart_three.html');">Water & chemicals</button>
+        <button class="button_four" id="four" style="color:#FFFBF7" onclick="window.location.replace('chart_four.html');">Carbon emissions</button>
+        <button class="button_five" id="five" style="color:#FFFBF7" onclick="window.location.replace('chart_five.html');">Energy use</button>
+        <button class="button_back" id="back" style="color: #FFFBF7" onclick="window.location.replace('05Flow.html');">Back</button>
+        <button class="button_next" id="back" style="color: #FFFBF7" onclick="window.location.replace('tee_view.html');">Next</button>
+      
+    <script type="text/javascript">    
+
+            d3.csv("fashion.csv").then(dataset => {
+
+            
+            dataset.forEach(d => { 
+            d.Brand = d.Brand;
+            d.c1 = +d.c1; 
+            d.c2 = +d.c2; 
+            d.c3 = +d.c3; 
+            d.c4 = +d.c4; 
+            d.c5 = +d.c5; 
+            d.c6 = +d.c6; 
+            d.c7 = +d.c7; 
+            });
+
+            //Setting svg params  
+            const svg = d3.select("svg")
+                           .style('background-color', '#FFFBF7');
+            
+            const w = parseInt(d3.select("svg").style("width"));
+            const h = parseInt(d3.select("svg").style("height"));
+            // const myColor = d3.scaleOrdinal(d3.schemeDark2);
+            const myColor = d3.scaleLinear().domain([10,10])
+              .range(["#958EBF", "#958EBF"]) ;
+            const xmargin = h*0.05; 
+            const ymargin = w*0.2; 
+
+            //Stack layout params
+            const stack = d3.stack()
+                            .keys(["c1", "c2", "c3", "c4", "c5", "c6", "c7"]);
+
+
+            //Stacking the data
+            const series = stack(dataset);
+
+            console.log(series); 
+            console.log(stack);
+            console.log(dataset.length)
+            
+
+            //Setting up the barchart scales 
+            const yScale = d3.scaleBand()
+                             .domain(dataset.map(d => d.Brand))
+                             .range([0,h*0.8])
+                             .paddingInner(0.1)
+                             ;
+
+            const xScale = d3.scaleLinear()
+                             .domain([0, d3.max(dataset, d => d.c1 + d.c2 + d.c3 + d.c4 + d.c5 + d.c6 + d.c7)])
+                             .range([0,w*0.8])
+                            //  .paddingInner(0.05)
+                             ;
+
+            const bottomAxis = d3.axisBottom()
+                                     .scale(xScale)
+                                     ;
+
+
+                
+            const leftAxis = d3.axisLeft()
+                                   .scale(yScale)
+                                   ;                 
+
+
+
+            //Making the data groups
+            const groups = svg.selectAll("g")
+                              .data(series)
+                              .enter()
+                              .append("g")
+                              .style("fill", (d,i)=> myColor(i)
+                              );   
+                            
+            // Making the rects
+            const bars = groups.selectAll("rect")
+            .data(d=>d)
+                               .enter()
+                               .append("rect")
+                               .attr("y", (d,i) => yScale(d.data.Brand))
+                               .attr("x", d => xScale(d[1])) 
+                               .attr("height", yScale.bandwidth())
+                               .attr("width", d=> xScale(d[1])-xScale(d[0]))
+                               .attr("stroke-width", 2)
+                               .attr("stroke", "white")
+                               .attr("transform", "translate("+(ymargin * 0.002)  + "," + (xmargin*3.11) +")")
+                               ;
+
+                        
+            //Implementing the bottom axis
+            svg.append("g")
+                   .attr("transform", "translate("+(ymargin*0.57)  + "," + (xmargin*19) +")") 
+                   .attr("font-weight", "regular")
+                   .call(bottomAxis);
+  
+            //Implementing the left axis
+            svg.append("g")
+                    .attr("transform", "translate(" +(ymargin*0.57)  + "," + (xmargin*3) +")")
+                    .attr("font-weight", "regular")
+                    .call(leftAxis); 
+
+
+            //Adding the chart title
+            svg.append("text")
+                   .attr("x", w/2) 
+                   .attr("y", h/45) 
+                   .attr("text-anchor", "middle") 
+                   .attr("fill", "#A75E23")
+                   .attr("class", "title")
+                   .text("Explore the performance of individual brands"); 
+                   
+            svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("Click on the different categories to see how brands perform on each one of them."); 
+              
+            svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "1.5em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("Remember, high scores mean high transparency. Absence of bars mean a score of 0 (no info shown by the brand)."); 
+
+            svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "7.5em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "#958EBF")
+              .attr("class", "subtitle")
+              .text("Water & chemicals"); 
+
+            svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "12.5em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("This category ranks brands on the basis of 7 different sub-categories:"); 
+
+              svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "14em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("- If a brand pblishes supplier wastewater test results"); 
+
+              svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "15.5em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("- If they disclose the process or methodology for conducting water-related risk assessments"); 
+             
+              svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "17em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "description")
+              .text("- If they publish the annual water footprint at manufacturing and/or processing facility level"); 
+
+              svg.append("text")
+              .attr("x", w/2) 
+              .attr("y", h*0.035) 
+              .attr("dy", "20em")
+              .attr("text-anchor", "middle") 
+              .attr("fill", "black")
+              .attr("class", "score")
+              .text("A perfect transparency score in this category: 7/7"); 
+
+
+            });
+
+
+        </script>
+    </body>
+</html>
