@@ -23,35 +23,43 @@ The visualization is designed to allow viewers to understand the context and the
 
 ## 04. Project documentation 
 
-### Video of the visual
+### Video of the interactive visuals
 
-The below video shows all the pages with the interactions incorporated in the visual.
-add
+The video [in this link](https://drive.google.com/file/d/1jqQqV_EJm9_pk0VxiXFCYGsZzgErRkqo/view?usp=sharing) shows all the pages with the interactions incorporated in the visual.
+
 
 ### Page-wise breakdown of data presented
 
 **01 Intoductory page**
 Viewers see a starter section and get into the visual report by clicking on "explore".
-
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 34 19 PM" src="https://user-images.githubusercontent.com/102167360/207164484-ccc4ef21-668a-4098-90a3-10ed4d41b7c0.png">
 
 **02 Context pages**
 There are 3 context pages that describe the relevance of the topic, fashion transparency index and the dataset. 
-
+<img width="1438" alt="Screen Shot 2022-12-12 at 4 34 29 PM" src="https://user-images.githubusercontent.com/102167360/207164518-f05c0e49-b1c6-4ca4-9bdc-b32b8458e0fe.png">
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 34 37 PM" src="https://user-images.githubusercontent.com/102167360/207164527-9abf0078-5828-4161-b754-8b2066f2e8f8.png">
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 34 45 PM" src="https://user-images.githubusercontent.com/102167360/207164546-1f5526cd-69a2-40e2-a5fa-f54542c3cb48.png">
 
 This page helps viewers understand the type of visuals they can view.
-
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 34 56 PM" src="https://user-images.githubusercontent.com/102167360/207164611-0974bca2-52aa-44f5-a469-e7ffa18ebe97.png">
 
 **03 Performance of indvidual brands across categories**
-5 stakced bar charts are presented in ths section. Viewers can jump between the scores of brands across different categories like water consumption, energy use, waste circularity, etc. Scores can be calculated by counting the number of bars in every brand.  
-
+5 stacked bar charts are presented in ths section. Viewers can jump between the scores of brands across different categories like water consumption, energy use, waste circularity, etc. Scores can be calculated by counting the number of bars in every brand.  
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 35 05 PM" src="https://user-images.githubusercontent.com/102167360/207164657-07f8b222-7757-48ce-afb8-51bea58d4da5.png">
 
 **04 The topmost and the least sustainable brands**
 This visual lists the brands according to the highest and lowest total scores (scroing out of 32). Viewers can sort the visuals in ascending or descending order (also colored accordingly). 
-
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 35 27 PM" src="https://user-images.githubusercontent.com/102167360/207164708-a91fc184-1b04-402a-aa73-4acd2ae96e0e.png">
+<img width="1435" alt="Screen Shot 2022-12-12 at 4 35 37 PM" src="https://user-images.githubusercontent.com/102167360/207164744-04043e93-36f2-40d5-838f-c31943420433.png">
 
 **05 Explore the performance of the different countries**
 This bubble chart shows average scores of each country along with the number of brands they have. Bigger the circle, higher is the score. A slider at the top helps viewers select the maximum score of their choice.
+<img width="1436" alt="Screen Shot 2022-12-12 at 4 35 55 PM" src="https://user-images.githubusercontent.com/102167360/207164724-0fd354ae-9374-4266-9b44-f30397b11f9c.png">
+<img width="1440" alt="Screen Shot 2022-12-12 at 4 36 05 PM" src="https://user-images.githubusercontent.com/102167360/207164735-e450bf3f-8c4c-4d99-a752-16b62894a45f.png">
 
+**06 Concluding page**
+This page provides a link to the original study for details and the option to restart the visual. 
+<img width="1436" alt="Screen Shot 2022-12-12 at 4 36 12 PM" src="https://user-images.githubusercontent.com/102167360/207164945-530bedaf-aaa9-4064-a71d-856455f3e982.png">
 
 ### Key features added
 Stacked bar plots:
@@ -68,7 +76,7 @@ Bubble chart:
 - Label names
 - Use of force simulation
 
-## 05 Key findings 
+## 05. Key findings 
 Stacked bar plots:
 Most of the brands appear to be doing well in the categories - sustainable sourcing and materials and carbon emmissions. 
 
