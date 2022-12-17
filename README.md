@@ -9,7 +9,9 @@ The environmental impacts of the fashion industry are widespread and substantial
 
 The project will answer the research questions -
 - Which companies/fashion brands perform the best/worst in terms of sharing information on their environmental impact transparency metrics charted out by fashion revolution?
-- What are the scores of each of the companies across the transparency sub-segments?
+- What are the total scores of each of the companies across the transparency sub-segments?
+- Which country has the highest average score?
+
 
 Read the complete project proposal [here](https://docs.google.com/document/d/1m5mDR6d8ahnKloVvW77OdbqLKlHP3M9e2Fki1RC-KiU/edit).
 
